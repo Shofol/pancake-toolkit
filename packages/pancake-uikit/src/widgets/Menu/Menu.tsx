@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+
 import throttle from "lodash/throttle";
 import {
-  Link
-} from "react-router-dom";
+  MenuEntry, LinkLabel
+} from "./components/MenuEntry";
+import MenuLink from "./components/MenuLink";
 
 import Overlay from "../../components/Overlay/Overlay";
 import Flex from "../../components/Box/Flex";
@@ -87,6 +90,7 @@ const Menu: React.FC<NavProps> = ({
   const [isPushed, setIsPushed] = useState(!isMobile);
   const [showMenu, setShowMenu] = useState(true);
   const refPrevOffset = useRef(window.pageYOffset);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,8 +136,14 @@ const Menu: React.FC<NavProps> = ({
         />
         <Flex>
           {
-            links.map((entry) => {
-              return <Link key={entry.label} to={`${entry.href}`}>{entry.label}</Link>
+            links.map((item) => {
+              return <MenuEntry key={item.href} secondary isActive={item.href === location.pathname} >
+                <MenuLink href={item.href}>
+                  <LinkLabel isPushed={isPushed}>{item.label}</LinkLabel>
+                </MenuLink>
+              </MenuEntry>
+
+              // <Link key={entry.label} to={`${entry.href}`}>{entry.label}</Link>
             })
           }
         </Flex>

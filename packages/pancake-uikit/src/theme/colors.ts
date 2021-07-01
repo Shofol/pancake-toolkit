@@ -2,12 +2,17 @@ import { Colors } from "./types";
 
 export const baseColors = {
   failure: "#ED4B9E",
-  primary: "#1FC7D4",
+  // primary: "#1FC7D4",
+  primary: "#4a00e0",
   primaryBright: "#53DEE9",
   primaryDark: "#0098A1",
   secondary: "#7645D9",
   success: "#31D0AA",
   warning: "#FFB237",
+  customGradients: {
+    violet: "linear-gradient(to right, #8e2de2, #4a00e0);",
+    aqua: "linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)"
+  }
 };
 
 export const additionalColors = {
@@ -31,7 +36,8 @@ export const lightColors: Colors = {
   tertiary: "#EFF4F5",
   text: "#280D5F",
   textDisabled: "#BDC2C4",
-  textSubtle: "#7A6EAA",
+  textSubtle: "#a576d3",
+  // textSubtle: "#7A6EAA",
   disabled: "#E9EAEB",
   gradients: {
     bubblegum: "linear-gradient(139.73deg, #E5FDFF 0%, #F3EFFF 100%)",

@@ -37,6 +37,11 @@ export type Gradients = {
   gold: string;
 };
 
+export type CustomGradients = {
+  violet: string,
+  aqua: string
+}
+
 export type Colors = {
   primary: string;
   primaryBright: string;
@@ -63,6 +68,7 @@ export type Colors = {
 
   // Gradients
   gradients: Gradients;
+  customGradients: CustomGradients;
 
   // Additional colors
   binance: string;

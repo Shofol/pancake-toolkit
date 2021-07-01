@@ -1,4 +1,5 @@
 import { scales, variants } from "./types";
+import * as colors from '../../theme/colors';
 
 export const scaleVariants = {
   [scales.MD]: {
@@ -57,15 +58,15 @@ export const styleVariants = {
 
 export const buttonVariants = {
   [variants.PRIMARY]: {
-    background: "linear-gradient(to right, #8e2de2, #4a00e0);",
+    background: colors.baseColors.customGradients.violet,
     color: "white",
   },
   [variants.SECONDARY]: {
-    background: "linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)",
-    border: "2px solid",
-    borderColor: "primary",
-    boxShadow: "none",
-    color: "primary",
+    background: colors.baseColors.customGradients.aqua,
+    // border: "2px solid",
+    // borderColor: "primary",
+    boxShadow: "level1",
+    color: "white",
     ":disabled": {
       backgroundColor: "transparent",
     },
