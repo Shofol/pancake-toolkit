@@ -1,6 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import { space, layout, variant } from "styled-system";
-import { scaleVariants, styleVariants } from "./theme";
+import { scaleVariants, buttonVariants } from "./theme";
 import { BaseButtonProps } from "./types";
 
 interface ThemedButtonProps extends BaseButtonProps {
@@ -72,12 +72,12 @@ const StyledButton = styled.button<BaseButtonProps>`
 
   ${getDisabledStyles}
   ${variant({
-    prop: "scale",
-    variants: scaleVariants,
-  })}
+  prop: "scale",
+  variants: scaleVariants,
+})}
   ${variant({
-    variants: styleVariants,
-  })}
+  variants: buttonVariants,
+})}
   ${layout}
   ${space}
 `;

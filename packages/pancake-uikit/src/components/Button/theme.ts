@@ -54,3 +54,42 @@ export const styleVariants = {
     boxShadow: "none",
   },
 };
+
+export const buttonVariants = {
+  [variants.PRIMARY]: {
+    background: "linear-gradient(to right, #8e2de2, #4a00e0);",
+    color: "white",
+  },
+  [variants.SECONDARY]: {
+    background: "linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4)",
+    border: "2px solid",
+    borderColor: "primary",
+    boxShadow: "none",
+    color: "primary",
+    ":disabled": {
+      backgroundColor: "transparent",
+    },
+  },
+  [variants.TERTIARY]: {
+    backgroundColor: "tertiary",
+    boxShadow: "none",
+    color: "primary",
+  },
+  [variants.SUBTLE]: {
+    backgroundColor: "textSubtle",
+    color: "backgroundAlt",
+  },
+  [variants.DANGER]: {
+    backgroundColor: "failure",
+    color: "white",
+  },
+  [variants.SUCCESS]: {
+    backgroundColor: "success",
+    color: "white",
+  },
+  [variants.TEXT]: {
+    backgroundColor: "transparent",
+    color: "primary",
+    boxShadow: "none",
+  },
+}

@@ -1,15 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import throttle from "lodash/throttle";
+import {
+  Link
+} from "react-router-dom";
+
 import Overlay from "../../components/Overlay/Overlay";
 import Flex from "../../components/Box/Flex";
 import { useMatchBreakpoints } from "../../hooks";
 import Logo from "./components/Logo";
-import Panel from "./components/Panel";
-import UserBlock from "./components/UserBlock";
+// import Panel from "./components/Panel";
+// import UserBlock from "./components/UserBlock";
 import { NavProps } from "./types";
-import Avatar from "./components/Avatar";
-import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
+// import Avatar from "./components/Avatar";
+import { MENU_HEIGHT } from "./config";
+// , SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL
 
 const Wrapper = styled.div`
   position: relative;
@@ -45,12 +50,13 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   transition: margin-top 0.2s, margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translate3d(0, 0, 0);
   max-width: 100%;
-
-  ${({ theme }) => theme.mediaQueries.nav} {
-    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
-    max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
-  }
 `;
+
+// ${({ theme }) => theme.mediaQueries.nav} {
+//   margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+//   max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
+// }
+
 
 const MobileOnlyOverlay = styled(Overlay)`
   position: fixed;
@@ -62,17 +68,18 @@ const MobileOnlyOverlay = styled(Overlay)`
 `;
 
 const Menu: React.FC<NavProps> = ({
-  account,
-  login,
-  logout,
+  // account,
+  logo,
+  // login,
+  // logout,
   isDark,
-  toggleTheme,
-  langs,
-  setLang,
-  currentLang,
-  cakePriceUsd,
+  // toggleTheme,
+  // langs,
+  // setLang,
+  // currentLang,
+  // cakePriceUsd,
   links,
-  profile,
+  // profile,
   children,
 }) => {
   const { isXl } = useMatchBreakpoints();
@@ -117,20 +124,28 @@ const Menu: React.FC<NavProps> = ({
     <Wrapper>
       <StyledNav showMenu={showMenu}>
         <Logo
+          image={logo}
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
           isDark={isDark}
           href={homeLink?.href ?? "/"}
         />
-        {!!login && !!logout && (
+        <Flex>
+          {
+            links.map((entry) => {
+              return <Link key={entry.label} to={`${entry.href}`}>{entry.label}</Link>
+            })
+          }
+        </Flex>
+        {/* {!!login && !!logout && (
           <Flex>
             <UserBlock account={account} login={login} logout={logout} />
             {profile && <Avatar profile={profile} />}
           </Flex>
-        )}
+        )} */}
       </StyledNav>
       <BodyWrapper>
-        <Panel
+        {/* <Panel
           isPushed={isPushed}
           isMobile={isMobile}
           showMenu={showMenu}
@@ -142,7 +157,7 @@ const Menu: React.FC<NavProps> = ({
           cakePriceUsd={cakePriceUsd}
           pushNav={setIsPushed}
           links={links}
-        />
+        /> */}
         <Inner isPushed={isPushed} showMenu={showMenu}>
           {children}
         </Inner>
